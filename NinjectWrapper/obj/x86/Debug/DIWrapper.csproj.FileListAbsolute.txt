@@ -1,0 +1,9 @@
+/home/cancech/Projects/Test/NinjectWrapper/obj/x86/Debug/DIWrapper.csproj.CoreCompileInputs.cache
+/home/cancech/Projects/Test/NinjectWrapper/bin/Debug/NinjectWrapper.dll
+/home/cancech/Projects/Test/NinjectWrapper/bin/Debug/NinjectWrapper.pdb
+/home/cancech/Projects/Test/NinjectWrapper/bin/Debug/Ninject.dll
+/home/cancech/Projects/Test/NinjectWrapper/bin/Debug/Ninject.xml
+/home/cancech/Projects/Test/NinjectWrapper/obj/x86/Debug/DIWrapper.csproj.CopyComplete
+/home/cancech/Projects/Test/NinjectWrapper/obj/x86/Debug/NinjectWrapper.dll
+/home/cancech/Projects/Test/NinjectWrapper/obj/x86/Debug/NinjectWrapper.pdb
+/home/cancech/Projects/Test/NinjectWrapper/obj/x86/Debug/DIWrapper.csprojAssemblyReference.cache
