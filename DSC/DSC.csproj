@@ -62,6 +62,7 @@
     <Compile Include="CalcModel.cs" />
     <Compile Include="Command.cs" />
     <Compile Include="Calculator.cs" />
+    <Compile Include="InputNumber.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

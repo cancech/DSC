@@ -32,6 +32,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CalcModelTest.cs" />
+    <Compile Include="InputNumberTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
