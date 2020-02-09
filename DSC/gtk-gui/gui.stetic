@@ -4,7 +4,7 @@
     <images-root-path>..</images-root-path>
   </configuration>
   <import>
-    <widget-library name="../bin/Debug/DSC.exe" internal="true" />
+    <widget-library name="../bin/Release/DSC.exe" internal="true" />
   </import>
   <widget class="Gtk.Window" id="MainWindow" design-size="406 544">
     <property name="MemberName" />
@@ -33,7 +33,7 @@
           </packing>
         </child>
         <child>
-          <widget class="Gtk.Table" id="table1">
+          <widget class="Gtk.Table" id="btnTable">
             <property name="MemberName" />
             <property name="NRows">5</property>
             <property name="NColumns">4</property>
@@ -41,32 +41,12 @@
             <property name="ColumnSpacing">6</property>
             <property name="BorderWidth">9</property>
             <child>
-              <widget class="Gtk.Button" id="Btn">
-                <property name="MemberName" />
-                <property name="Type">TextOnly</property>
-                <property name="Label" translatable="yes">0</property>
-                <property name="UseUnderline">True</property>
-              </widget>
-              <packing>
-                <property name="TopAttach">4</property>
-                <property name="BottomAttach">5</property>
-                <property name="LeftAttach">1</property>
-                <property name="RightAttach">2</property>
-                <property name="AutoSize">False</property>
-                <property name="XExpand">True</property>
-                <property name="XFill">True</property>
-                <property name="XShrink">False</property>
-                <property name="YExpand">True</property>
-                <property name="YFill">True</property>
-                <property name="YShrink">False</property>
-              </packing>
-            </child>
-            <child>
               <widget class="Gtk.Button" id="Btn1">
                 <property name="MemberName" />
                 <property name="Type">TextOnly</property>
                 <property name="Label" translatable="yes">1</property>
                 <property name="UseUnderline">True</property>
+                <signal name="Clicked" handler="OnBtnClicked" />
               </widget>
               <packing>
                 <property name="TopAttach">3</property>
@@ -86,6 +66,7 @@
                 <property name="Type">TextOnly</property>
                 <property name="Label" translatable="yes">2</property>
                 <property name="UseUnderline">True</property>
+                <signal name="Clicked" handler="OnBtnClicked" />
               </widget>
               <packing>
                 <property name="TopAttach">3</property>
@@ -107,6 +88,7 @@
                 <property name="Type">TextOnly</property>
                 <property name="Label" translatable="yes">3</property>
                 <property name="UseUnderline">True</property>
+                <signal name="Clicked" handler="OnBtnClicked" />
               </widget>
               <packing>
                 <property name="TopAttach">3</property>
@@ -128,6 +110,7 @@
                 <property name="Type">TextOnly</property>
                 <property name="Label" translatable="yes">4</property>
                 <property name="UseUnderline">True</property>
+                <signal name="Clicked" handler="OnBtnClicked" />
               </widget>
               <packing>
                 <property name="TopAttach">2</property>
@@ -147,6 +130,7 @@
                 <property name="Type">TextOnly</property>
                 <property name="Label" translatable="yes">5</property>
                 <property name="UseUnderline">True</property>
+                <signal name="Clicked" handler="OnBtnClicked" />
               </widget>
               <packing>
                 <property name="TopAttach">2</property>
@@ -170,6 +154,7 @@
                 <property name="Type">TextOnly</property>
                 <property name="Label" translatable="yes">6</property>
                 <property name="UseUnderline">True</property>
+                <signal name="Clicked" handler="OnBtnClicked" />
               </widget>
               <packing>
                 <property name="TopAttach">2</property>
@@ -191,6 +176,7 @@
                 <property name="Type">TextOnly</property>
                 <property name="Label" translatable="yes">7</property>
                 <property name="UseUnderline">True</property>
+                <signal name="Clicked" handler="OnBtnClicked" />
               </widget>
               <packing>
                 <property name="TopAttach">1</property>
@@ -210,6 +196,7 @@
                 <property name="Type">TextOnly</property>
                 <property name="Label" translatable="yes">8</property>
                 <property name="UseUnderline">True</property>
+                <signal name="Clicked" handler="OnBtnClicked" />
               </widget>
               <packing>
                 <property name="TopAttach">1</property>
@@ -231,6 +218,7 @@
                 <property name="Type">TextOnly</property>
                 <property name="Label" translatable="yes">9</property>
                 <property name="UseUnderline">True</property>
+                <signal name="Clicked" handler="OnBtnClicked" />
               </widget>
               <packing>
                 <property name="TopAttach">1</property>
@@ -252,6 +240,7 @@
                 <property name="Type">TextOnly</property>
                 <property name="Label" translatable="yes">C</property>
                 <property name="UseUnderline">True</property>
+                <signal name="Clicked" handler="OnBtnClicked" />
               </widget>
               <packing>
                 <property name="AutoSize">False</property>
@@ -269,6 +258,7 @@
                 <property name="Type">TextOnly</property>
                 <property name="Label" translatable="yes">.</property>
                 <property name="UseUnderline">True</property>
+                <signal name="Clicked" handler="OnBtnClicked" />
               </widget>
               <packing>
                 <property name="TopAttach">4</property>
@@ -290,6 +280,7 @@
                 <property name="Type">TextOnly</property>
                 <property name="Label" translatable="yes">Del</property>
                 <property name="UseUnderline">True</property>
+                <signal name="Clicked" handler="OnBtnClicked" />
               </widget>
               <packing>
                 <property name="LeftAttach">1</property>
@@ -304,11 +295,12 @@
               </packing>
             </child>
             <child>
-              <widget class="Gtk.Button" id="BtnDivide1">
+              <widget class="Gtk.Button" id="BtnDivide">
                 <property name="MemberName" />
                 <property name="Type">TextOnly</property>
                 <property name="Label" translatable="yes">/</property>
                 <property name="UseUnderline">True</property>
+                <signal name="Clicked" handler="OnBtnClicked" />
               </widget>
               <packing>
                 <property name="LeftAttach">3</property>
@@ -328,6 +320,7 @@
                 <property name="Type">TextOnly</property>
                 <property name="Label" translatable="yes">=</property>
                 <property name="UseUnderline">True</property>
+                <signal name="Clicked" handler="OnBtnClicked" />
               </widget>
               <packing>
                 <property name="TopAttach">4</property>
@@ -349,6 +342,7 @@
                 <property name="Type">TextOnly</property>
                 <property name="Label" translatable="yes">-</property>
                 <property name="UseUnderline">True</property>
+                <signal name="Clicked" handler="OnBtnClicked" />
               </widget>
               <packing>
                 <property name="TopAttach">2</property>
@@ -370,6 +364,7 @@
                 <property name="Type">TextOnly</property>
                 <property name="Label" translatable="yes">x</property>
                 <property name="UseUnderline">True</property>
+                <signal name="Clicked" handler="OnBtnClicked" />
               </widget>
               <packing>
                 <property name="TopAttach">1</property>
@@ -391,6 +386,7 @@
                 <property name="Type">TextOnly</property>
                 <property name="Label" translatable="yes">+</property>
                 <property name="UseUnderline">True</property>
+                <signal name="Clicked" handler="OnBtnClicked" />
               </widget>
               <packing>
                 <property name="TopAttach">3</property>
@@ -407,11 +403,32 @@
               </packing>
             </child>
             <child>
-              <widget class="Gtk.Button" id="BtnPlusMinus">
+              <widget class="Gtk.Button" id="BtnPwr">
+                <property name="MemberName" />
+                <property name="Type">TextOnly</property>
+                <property name="Label" translatable="yes">^</property>
+                <property name="UseUnderline">True</property>
+                <signal name="Clicked" handler="OnBtnClicked" />
+              </widget>
+              <packing>
+                <property name="LeftAttach">2</property>
+                <property name="RightAttach">3</property>
+                <property name="AutoSize">False</property>
+                <property name="XExpand">True</property>
+                <property name="XFill">True</property>
+                <property name="XShrink">False</property>
+                <property name="YExpand">True</property>
+                <property name="YFill">True</property>
+                <property name="YShrink">False</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="Gtk.Button" id="BtnSign">
                 <property name="MemberName" />
                 <property name="Type">TextOnly</property>
                 <property name="Label" translatable="yes">+/-</property>
                 <property name="UseUnderline">True</property>
+                <signal name="Clicked" handler="OnBtnClicked" />
               </widget>
               <packing>
                 <property name="TopAttach">4</property>
@@ -428,15 +445,18 @@
               </packing>
             </child>
             <child>
-              <widget class="Gtk.Button" id="BtnPwr">
+              <widget class="Gtk.Button" id="BtnZero">
                 <property name="MemberName" />
                 <property name="Type">TextOnly</property>
-                <property name="Label" translatable="yes">^</property>
+                <property name="Label" translatable="yes">0</property>
                 <property name="UseUnderline">True</property>
+                <signal name="Clicked" handler="OnBtnClicked" />
               </widget>
               <packing>
-                <property name="LeftAttach">2</property>
-                <property name="RightAttach">3</property>
+                <property name="TopAttach">4</property>
+                <property name="BottomAttach">5</property>
+                <property name="LeftAttach">1</property>
+                <property name="RightAttach">2</property>
                 <property name="AutoSize">False</property>
                 <property name="XExpand">True</property>
                 <property name="XFill">True</property>
