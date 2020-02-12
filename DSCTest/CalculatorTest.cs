@@ -63,6 +63,22 @@ namespace DSCTest
             VerifyAllChecked();
         }
 
+        [Test]
+        public void TestClear()
+        {
+            calc.Number.OverrideValue(43);
+            Assert.AreEqual(43, calc.Number.ValueDecimal());
+            calc.SetOperator(mockOperator.Object);
+            Assert.AreEqual(0, calc.Number.ValueDecimal());
+            calc.Number.OverrideValue(-9493);
+            Assert.AreEqual(-9493, calc.Number.ValueDecimal());
+
+            calc.Clear();
+            Assert.AreEqual(0, calc.Number.ValueDecimal());
+            mockOperator.Verify(m => m.PerformOperation(It.IsAny<decimal>(), It.IsAny<decimal>()), Times.Never());
+            VerifyAllChecked();
+        }
+
         private void VerifyAllChecked()
         {
             mockOperator.VerifyNoOtherCalls();

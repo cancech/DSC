@@ -22,5 +22,11 @@
             Number.OverrideValue(op.PerformOperation(lhs, Number.ValueDecimal()));
             op = new DummyOperator();
         }
+
+        public virtual void Clear()
+        {
+            Number.Clear();
+            op = new DummyOperator();
+        }
     }
 }

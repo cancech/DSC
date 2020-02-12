@@ -71,6 +71,7 @@
     <Compile Include="AddOperator.cs" />
     <Compile Include="EqualsCommandProcessor.cs" />
     <Compile Include="DummyOperator.cs" />
+    <Compile Include="ClearCommandProcessor.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

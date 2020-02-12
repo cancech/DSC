@@ -25,6 +25,7 @@ namespace DSC
             manager.RegisterCommand(new NumericCommandProcessor(cal));
             manager.RegisterCommand(new OperationCommandProcessor(cal));
             manager.RegisterCommand(new EqualsCommandProcessor(cal));
+            manager.RegisterCommand(new ClearCommandProcessor(cal));
         }
     }
 }
