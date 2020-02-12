@@ -1,11 +1,11 @@
 ﻿namespace DSC
 {
-    public class MinusOperator : IOperator
+    public class MultiplyOperator : IOperator
     {
 
         public decimal PerformOperation(decimal lhs, decimal rhs)
         {
-            return lhs - rhs;
+            return lhs * rhs;
         }
     }
 }

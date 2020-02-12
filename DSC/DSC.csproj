@@ -73,6 +73,9 @@
     <Compile Include="DummyOperator.cs" />
     <Compile Include="ClearCommandProcessor.cs" />
     <Compile Include="MinusOperator.cs" />
+    <Compile Include="MultiplyOperator.cs" />
+    <Compile Include="DivideOperator.cs" />
+    <Compile Include="PowerOperator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

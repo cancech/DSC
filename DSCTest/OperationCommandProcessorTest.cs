@@ -51,6 +51,30 @@ namespace DSCTest
             VerifyAllChecked();
         }
 
+        [Test]
+        public void TestProcessMultiplyCommand()
+        {
+            proc.ProcessCommand(model.Object, Command.Multiply);
+            calc.Verify(c => c.SetOperator(It.IsAny<MultiplyOperator>()));
+            VerifyAllChecked();
+        }
+
+        [Test]
+        public void TestProcessDivideCommand()
+        {
+            proc.ProcessCommand(model.Object, Command.Divide);
+            calc.Verify(c => c.SetOperator(It.IsAny<DivideOperator>()));
+            VerifyAllChecked();
+        }
+
+        [Test]
+        public void TestProcessPowerCommand()
+        {
+            proc.ProcessCommand(model.Object, Command.Power);
+            calc.Verify(c => c.SetOperator(It.IsAny<PowerOperator>()));
+            VerifyAllChecked();
+        }
+
         private void VerifyAllChecked()
         {
             model.VerifyNoOtherCalls();

@@ -25,6 +25,15 @@
                 case Command.Minus:
                     calculator.SetOperator(new MinusOperator());
                     break;
+                case Command.Multiply:
+                    calculator.SetOperator(new MultiplyOperator());
+                    break;
+                case Command.Divide:
+                    calculator.SetOperator(new DivideOperator());
+                    break;
+                case Command.Power:
+                    calculator.SetOperator(new PowerOperator());
+                    break;
             }
         }
     }
