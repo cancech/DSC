@@ -2,17 +2,25 @@
 {
     public class Calculator
     {
-        private readonly CalcModel calcModel;
+        public virtual InputNumber Number { get; }
 
-        public Calculator(CalcModel calcModel)
+        private decimal lhs = 0;
+
+        private IOperator op = new DummyOperator();
+
+        public Calculator() => Number = new InputNumber();
+
+        public virtual void SetOperator(IOperator op)
         {
-            this.calcModel = calcModel;
-            calcModel.InputCommand += ProcessInput;
+            this.op = op;
+            lhs = Number.ValueDecimal();
+            Number.Clear();
         }
 
-        private void ProcessInput(CalcModel m, Command c)
+        public virtual void PerformOperation()
         {
-            calcModel.UpdateDisplay(c.ToString());
+            Number.OverrideValue(op.PerformOperation(lhs, Number.ValueDecimal()));
+            op = new DummyOperator();
         }
     }
 }

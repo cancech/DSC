@@ -63,6 +63,14 @@
     <Compile Include="Command.cs" />
     <Compile Include="Calculator.cs" />
     <Compile Include="InputNumber.cs" />
+    <Compile Include="CommandManager.cs" />
+    <Compile Include="ICommandProcessor.cs" />
+    <Compile Include="NumericCommandProcessor.cs" />
+    <Compile Include="OperationCommandProcessor.cs" />
+    <Compile Include="IOperator.cs" />
+    <Compile Include="AddOperator.cs" />
+    <Compile Include="EqualsCommandProcessor.cs" />
+    <Compile Include="DummyOperator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

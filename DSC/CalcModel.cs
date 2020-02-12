@@ -12,7 +12,7 @@
 
         public delegate void DisplayHandler(CalcModel m, string s);
         public event DisplayHandler Display;
-        public void UpdateDisplay(string s) => Display(this, s);
+        public virtual void UpdateDisplay(string s) => Display(this, s);
 
         public delegate void UserInput(CalcModel m, Command c);
         public event UserInput InputCommand;

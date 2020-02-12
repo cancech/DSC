@@ -1,18 +1,12 @@
-﻿using System;
+﻿
+
+using System.Collections.Generic;
+
 namespace DSC
 {
     public enum Command
     {
-        Clear,
-        Delete,
-        Power,
-        Divide,
-        Multiply,
-        Minus,
-        Plus,
-        Equals,
-        Decimal,
-        InvertSign,
+        Input0,
         Input1,
         Input2,
         Input3,
@@ -22,6 +16,23 @@ namespace DSC
         Input7,
         Input8,
         Input9,
-        Input0
+        Clear,
+        Delete,
+        Power,
+        Divide,
+        Multiply,
+        Minus,
+        Plus,
+        Equals,
+        Decimal,
+        InvertSign
     };
+
+    public static class Extensions
+    {
+        public static bool IsNumeric(this Command command)
+        {
+            return Command.Input0 <= command && command <= Command.Input9;
+        }
+    }
 }

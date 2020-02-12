@@ -8,15 +8,15 @@ namespace DSC
         private bool isDecimal;
         private bool isPositive;
         private int signFactor;
+        private bool isTempOverride;
 
-        public InputNumber()
-        {
-            // Clear will reset all values to their expected initial state
-            Clear();
-        }
+        // Clear will reset all values to their expected initial state
+        public InputNumber() => Clear();
 
-        public void AppendDigit(int digit)
+        public virtual void AppendDigit(int digit)
         {
+            CheckForOverride();
+
             //Don't append leading 0's
             if (digit == 0 && IsEmpty())
                 return;
@@ -24,8 +24,10 @@ namespace DSC
             input += digit;
         }
 
-        public void AppendDecimalPoint()
+        public virtual void AppendDecimalPoint()
         {
+            CheckForOverride();
+
             // Ignore subsequent decimal inputs. Only care about the first one
             if (isDecimal)
                 return;
@@ -34,14 +36,18 @@ namespace DSC
             isDecimal = true;
         }
 
-        public void InvertSign()
+        public virtual void InvertSign()
         {
+            CheckForOverride();
+
             isPositive = !isPositive;
             signFactor = signFactor * -1;
         }
 
-        public void DeleteDigit()
+        public virtual void DeleteDigit()
         {
+            CheckForOverride();
+
             // Only delete if there is something to delete
             if (IsEmpty())
                 return;
@@ -54,15 +60,35 @@ namespace DSC
                 isDecimal = false;
         }
 
-        public void Clear()
+        public virtual void OverrideValue(decimal value)
+        {
+            isTempOverride = true;
+
+            if (value < 0)
+            {
+                isPositive = false;
+                signFactor = -1;
+            }
+            else
+            {
+                isPositive = true;
+                signFactor = 1;
+            }
+
+            input = "" + Math.Abs(value);
+            isDecimal = input.Contains(".");
+        }
+
+        public virtual void Clear()
         {
             input = "";
             isDecimal = false;
             isPositive = true;
+            isTempOverride = false;
             signFactor = 1;
         }
 
-        public string ValueString()
+        public virtual string ValueString()
         {
             string toReturn = input;
 
@@ -77,30 +103,31 @@ namespace DSC
             return toReturn;
         }
 
-        public bool IsDecimal()
+        public virtual bool IsDecimal()
         {
             return isDecimal;
         }
 
-        public int ValueInt()
+        public virtual decimal ValueDecimal()
         {
-            if (isDecimal || IsEmpty())
-                return 0;
+            if (IsEmpty() || input.Equals("."))
+                return 0.0M;
 
-            return Int32.Parse(input) * signFactor;
-        }
-
-        public double ValueDouble()
-        {
-            if (!isDecimal || IsEmpty() || input.Equals("."))
-                return 0.0;
-
-            return Double.Parse(input) * signFactor;
+            return Decimal.Parse(input) * signFactor;
         }
 
         private bool IsEmpty()
         {
             return input.Equals("");
+        }
+
+        private void CheckForOverride()
+        {
+            if (!isTempOverride)
+                return;
+
+            Clear();
+            isTempOverride = false;
         }
     }
 }

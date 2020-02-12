@@ -19,7 +19,7 @@ namespace DSCTest
         [Test]
         public void TestBaseNumber()
         {
-            AssertValue("0", 0, 0.0, false);
+            AssertValue("0", 0.0M, false);
         }
 
         [Test]
@@ -27,7 +27,7 @@ namespace DSCTest
         {
             // First try just the one
             input.AppendDigit(0);
-            AssertValue("0", 0, 0.0, false);
+            AssertValue("0", 0.0M, false);
 
             // Now try a bunch
             input.AppendDigit(0);
@@ -39,37 +39,37 @@ namespace DSCTest
             input.AppendDigit(0);
             input.AppendDigit(0);
             input.AppendDigit(0);
-            AssertValue("0", 0, 0.0, false);
+            AssertValue("0", 0.0M, false);
         }
 
         [Test]
         public void TestIntInput()
         {
             input.AppendDigit(1);
-            AssertValue("1", 1, 0.0, false);
+            AssertValue("1", 1.0M, false);
             input.AppendDigit(2);
-            AssertValue("12", 12, 0.0, false);
+            AssertValue("12", 12.0M, false);
             input.AppendDigit(3);
-            AssertValue("123", 123, 0.0, false);
+            AssertValue("123", 123.0M, false);
             input.AppendDigit(4);
-            AssertValue("1234", 1234, 0.0, false);
+            AssertValue("1234", 1234.0M, false);
             input.AppendDigit(5);
-            AssertValue("12345", 12345, 0.0, false);
+            AssertValue("12345", 12345.0M, false);
         }
 
         [Test]
         public void TestFollowingZeros()
         {
             input.AppendDigit(9);
-            AssertValue("9", 9, 0.0, false);
+            AssertValue("9", 9.0M, false);
             input.AppendDigit(0);
-            AssertValue("90", 90, 0.0, false);
+            AssertValue("90", 90.0M, false);
             input.AppendDigit(0);
-            AssertValue("900", 900, 0.0, false);
+            AssertValue("900", 900.0M, false);
             input.AppendDigit(0);
-            AssertValue("9000", 9000, 0.0, false);
+            AssertValue("9000", 9000.0M, false);
             input.AppendDigit(0);
-            AssertValue("90000", 90000, 0.0, false);
+            AssertValue("90000", 90000.0M, false);
         }
 
         [Test]
@@ -77,63 +77,63 @@ namespace DSCTest
         {
             // Check that nothing happens if were delete when nothing is present
             input.DeleteDigit();
-            AssertValue("0", 0, 0.0, false);
+            AssertValue("0", 0.0M, false);
 
             // Add one digit and delete it
             input.AppendDigit(6);
-            AssertValue("6", 6, 0.0, false);
+            AssertValue("6", 6.0M, false);
             input.DeleteDigit();
-            AssertValue("0", 0, 0.0, false);
+            AssertValue("0", 0.0M, false);
             // Still nothing happens if we delete "past" all digits
             input.DeleteDigit();
-            AssertValue("0", 0, 0.0, false);
+            AssertValue("0", 0.0M, false);
 
             // Now add/delete a bunch of things
             input.AppendDigit(7);
-            AssertValue("7", 7, 0.0, false);
+            AssertValue("7", 7.0M, false);
             input.AppendDigit(8);
-            AssertValue("78", 78, 0.0, false);
+            AssertValue("78", 78.0M, false);
             input.AppendDigit(9);
-            AssertValue("789", 789, 0.0, false);
+            AssertValue("789", 789.0M, false);
             input.DeleteDigit();
-            AssertValue("78", 78, 0.0, false);
+            AssertValue("78", 78.0M, false);
             input.AppendDigit(0);
-            AssertValue("780", 780, 0.0, false);
+            AssertValue("780", 780.0M, false);
             input.DeleteDigit();
-            AssertValue("78", 78, 0.0, false);
+            AssertValue("78", 78.0M, false);
             input.AppendDigit(4);
-            AssertValue("784", 784, 0.0, false);
+            AssertValue("784", 784.0M, false);
             input.AppendDigit(1);
-            AssertValue("7841", 7841, 0.0, false);
+            AssertValue("7841", 7841.0M, false);
             input.DeleteDigit();
-            AssertValue("784", 784, 0.0, false);
+            AssertValue("784", 784.0M, false);
             input.DeleteDigit();
-            AssertValue("78", 78, 0.0, false);
+            AssertValue("78", 78.0M, false);
             input.DeleteDigit();
-            AssertValue("7", 7, 0.0, false);
+            AssertValue("7", 7.0M, false);
             input.DeleteDigit();
-            AssertValue("0", 0, 0.0, false);
+            AssertValue("0", 0.0M, false);
             input.DeleteDigit();
-            AssertValue("0", 0, 0.0, false);
+            AssertValue("0", 0.0M, false);
             input.DeleteDigit();
-            AssertValue("0", 0, 0.0, false);
+            AssertValue("0", 0.0M, false);
             input.DeleteDigit();
-            AssertValue("0", 0, 0.0, false);
+            AssertValue("0", 0.0M, false);
         }
 
         [Test]
         public void TestDecimal()
         {
             input.AppendDigit(5);
-            AssertValue("5", 5, 0.0, false);
+            AssertValue("5", 5.0M, false);
             input.AppendDecimalPoint();
-            AssertValue("5.", 0, 5.0, true);
+            AssertValue("5.", 5.0M, true);
             input.AppendDigit(5);
-            AssertValue("5.5", 0, 5.5, true);
+            AssertValue("5.5", 5.5M, true);
             input.AppendDigit(5);
-            AssertValue("5.55", 0, 5.55, true);
+            AssertValue("5.55", 5.55M, true);
             input.AppendDigit(5);
-            AssertValue("5.555", 0, 5.555, true);
+            AssertValue("5.555", 5.555M, true);
         }
 
         [Test]
@@ -141,23 +141,23 @@ namespace DSCTest
         {
             // Input some number
             input.AppendDigit(8);
-            AssertValue("8", 8, 0, false);
+            AssertValue("8", 8.0M, false);
             input.AppendDecimalPoint();
-            AssertValue("8.", 0, 8.0, true);
+            AssertValue("8.", 8.0M, true);
             input.AppendDigit(1);
-            AssertValue("8.1", 0, 8.1, true);
+            AssertValue("8.1", 8.1M, true);
             input.AppendDigit(6);
-            AssertValue("8.16", 0, 8.16, true);
+            AssertValue("8.16", 8.16M, true);
 
             // Now delete!
             input.DeleteDigit();
-            AssertValue("8.1", 0, 8.1, true);
+            AssertValue("8.1", 8.1M, true);
             input.DeleteDigit();
-            AssertValue("8.", 0, 8.0, true);
+            AssertValue("8.", 8.0M, true);
             input.DeleteDigit();
-            AssertValue("8", 8, 0, false);
+            AssertValue("8", 8.0M, false);
             input.DeleteDigit();
-            AssertValue("0", 0, 0, false);
+            AssertValue("0", 0.0M, false);
         }
 
         [Test]
@@ -165,40 +165,40 @@ namespace DSCTest
         {
             // Get some integer input in place
             TestIntInput();
-            AssertValue("12345", 12345, 0.0, false);
+            AssertValue("12345", 12345.0M, false);
             // Clear it
             input.Clear();
-            AssertValue("0", 0, 0.0, false);
+            AssertValue("0", 0.0M, false);
 
             // Get some decimal in place
             TestDecimal();
-            AssertValue("5.555", 0, 5.555, true);
+            AssertValue("5.555", 5.555M, true);
             // Clear it
             input.Clear();
-            AssertValue("0", 0, 0.0, false);
+            AssertValue("0", 0.0M, false);
         }
 
         [Test]
         public void TestInvertSignNoInput()
         {
-            AssertValue("0", 0, 0.0, false);
+            AssertValue("0", 0.0M, false);
             input.InvertSign();
-            AssertValue("-0", 0, 0.0, false);
+            AssertValue("-0", 0.0M, false);
             input.InvertSign();
-            AssertValue("0", 0, 0.0, false);
+            AssertValue("0", 0.0M, false);
         }
 
         [Test]
         public void TestInvertSignInt()
         {
             input.InvertSign();
-            AssertValue("-0", 0, 0.0, false);
+            AssertValue("-0", 0.0M, false);
             input.AppendDigit(7);
-            AssertValue("-7", -7, 0.0, false);
+            AssertValue("-7", -7.0M, false);
             input.AppendDigit(3);
-            AssertValue("-73", -73, 0.0, false);
+            AssertValue("-73", -73.0M, false);
             input.InvertSign();
-            AssertValue("73", 73, 0.0, false);
+            AssertValue("73", 73.0M, false);
         }
 
         [Test]
@@ -206,16 +206,16 @@ namespace DSCTest
         {
             // Get some integer input in place
             TestIntInput();
-            AssertValue("12345", 12345, 0.0, false);
+            AssertValue("12345", 12345.0M, false);
             input.InvertSign();
-            AssertValue("-12345", -12345, 0.0, false);
+            AssertValue("-12345", -12345.0M, false);
             // Clear it
             input.Clear();
-            AssertValue("0", 0, 0.0, false);
+            AssertValue("0", 0.0M, false);
 
             // Make sure that it "stays" positive
             input.AppendDigit(9);
-            AssertValue("9", 9, 0.0, false);
+            AssertValue("9", 9.0M, false);
         }
 
         [Test]
@@ -223,17 +223,17 @@ namespace DSCTest
         {
             // Get some decimal in place
             TestDecimal();
-            AssertValue("5.555", 0, 5.555, true);
+            AssertValue("5.555", 5.555M, true);
             input.InvertSign();
-            AssertValue("-5.555", 0, -5.555, true);
+            AssertValue("-5.555", -5.555M, true);
 
             // Clear it
             input.Clear();
-            AssertValue("0", 0, 0.0, false);
+            AssertValue("0", 0.0M, false);
 
             // Make sure that it "stays" positive
             input.AppendDigit(8);
-            AssertValue("8", 8, 0.0, false);
+            AssertValue("8", 8.0M, false);
         }
 
         [Test]
@@ -241,22 +241,86 @@ namespace DSCTest
         {
             // Number can start with just the decimal point
             input.AppendDecimalPoint();
-            AssertValue("0.", 0, 0.0, true);
+            AssertValue("0.", 0.0M, true);
             input.AppendDigit(4);
-            AssertValue("0.4", 0, 0.4, true);
+            AssertValue("0.4", 0.4M, true);
 
             // Can delete everything properly
             input.DeleteDigit();
-            AssertValue("0.", 0, 0.0, true);
+            AssertValue("0.", 0.0M, true);
             input.DeleteDigit();
-            AssertValue("0", 0, 0.0, false);
+            AssertValue("0", 0.0M, false);
         }
 
-        private void AssertValue(string txt, int intVal, double dblVal, bool isDecimal)
+        [TestCase(123, false)]
+        [TestCase(-38.48, true)]
+        public void TestOverrideValue(decimal val, bool isDecimal)
+        {
+            input.OverrideValue(val);
+            AssertValue(val.ToString(), val, isDecimal);
+        }
+
+        [Test]
+        public void TestOverrideValueNumberInput()
+        {
+            TestOverrideValue(574.594M, true);
+            input.AppendDigit(7);
+
+            AssertValue("7", 7M, false);
+        }
+
+        [Test]
+        public void TestOverrideValueDecimalInput()
+        {
+            TestOverrideValue(847M, false);
+            input.AppendDecimalPoint();
+
+            AssertValue("0.", 0M, true);
+        }
+
+        [Test]
+        public void TestOverrideNegValueInvertSign()
+        {
+            TestOverrideValue(-295M, false);
+            input.InvertSign();
+
+            AssertValue("-0", 0M, false);
+        }
+
+        [Test]
+        public void TestOverridePosValueInvertSign()
+        {
+            TestOverrideValue(9847.20M, true);
+            input.InvertSign();
+
+            AssertValue("-0", 0M, false);
+        }
+
+        [Test]
+        public void TestOverrideValueClear()
+        {
+            TestOverrideValue(-4903, false);
+            input.Clear();
+            AssertValue("0", 0M, false);
+
+            // Make sure that the override flag has cleared and can now manipulate the number
+            input.AppendDigit(8);
+            AssertValue("8", 8M, false);
+        }
+
+        [Test]
+        public void TestOverrideValueDeleteDigit()
+        {
+            TestOverrideValue(5830.483M, true);
+            input.DeleteDigit();
+
+            AssertValue("0", 0M, false);
+        }
+
+        private void AssertValue(string txt, decimal dblVal, bool isDecimal)
         {
             Assert.AreEqual(txt, input.ValueString());
-            Assert.AreEqual(intVal, input.ValueInt());
-            Assert.AreEqual(dblVal, input.ValueDouble());
+            Assert.AreEqual(dblVal, input.ValueDecimal());
             Assert.AreEqual(isDecimal, input.IsDecimal());
         }
     }
