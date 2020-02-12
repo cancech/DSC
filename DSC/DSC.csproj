@@ -72,6 +72,7 @@
     <Compile Include="EqualsCommandProcessor.cs" />
     <Compile Include="DummyOperator.cs" />
     <Compile Include="ClearCommandProcessor.cs" />
+    <Compile Include="MinusOperator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

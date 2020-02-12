@@ -43,6 +43,14 @@ namespace DSCTest
             VerifyAllChecked();
         }
 
+        [Test]
+        public void TestProcessMinusCommand()
+        {
+            proc.ProcessCommand(model.Object, Command.Minus);
+            calc.Verify(c => c.SetOperator(It.IsAny<MinusOperator>()));
+            VerifyAllChecked();
+        }
+
         private void VerifyAllChecked()
         {
             model.VerifyNoOtherCalls();

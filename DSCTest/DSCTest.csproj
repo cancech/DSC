@@ -55,6 +55,7 @@
     <Compile Include="EqualsCommandProcessorTest.cs" />
     <Compile Include="OperationCommandProcessorTest.cs" />
     <Compile Include="ClearCommandProcessorTest.cs" />
+    <Compile Include="MinusOperatorTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

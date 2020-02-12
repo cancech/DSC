@@ -22,6 +22,9 @@
                 case Command.Plus:
                     calculator.SetOperator(new AddOperator());
                     break;
+                case Command.Minus:
+                    calculator.SetOperator(new MinusOperator());
+                    break;
             }
         }
     }
