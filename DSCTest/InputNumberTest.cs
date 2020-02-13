@@ -317,6 +317,17 @@ namespace DSCTest
             AssertValue("0", 0M, false);
         }
 
+        [Test]
+        public void TestOverrideValueZero()
+        {
+            input.OverrideValue(0M);
+            AssertValue("0", 0M, false);
+            input.OverrideValue(0.0M);
+            AssertValue("0", 0M, false);
+            input.OverrideValue(0.0000000M);
+            AssertValue("0", 0M, false);
+        }
+
         private void AssertValue(string txt, decimal dblVal, bool isDecimal)
         {
             Assert.AreEqual(txt, input.ValueString());

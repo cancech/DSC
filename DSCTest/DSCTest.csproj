@@ -59,6 +59,7 @@
     <Compile Include="MultiplyOperatorTest.cs" />
     <Compile Include="DivideOperatorTest.cs" />
     <Compile Include="PowerOperatorTest.cs" />
+    <Compile Include="ProgramTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -64,6 +64,15 @@ namespace DSC
         {
             isTempOverride = true;
 
+            if (value == 0)
+            {
+                // Special case if the result is exactly 0
+                input = "0";
+                isPositive = true;
+                signFactor = 1;
+                return;
+            }
+
             if (value < 0)
             {
                 isPositive = false;
@@ -75,7 +84,7 @@ namespace DSC
                 signFactor = 1;
             }
 
-            input = "" + Math.Abs(value);
+            input = Math.Abs(value).ToString();
             isDecimal = input.Contains(".");
         }
 

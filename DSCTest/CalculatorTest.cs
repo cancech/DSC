@@ -79,6 +79,22 @@ namespace DSCTest
             VerifyAllChecked();
         }
 
+        [Test]
+        public void TestChainOperations()
+        {
+            mockOperator.Setup(m => m.PerformOperation(It.IsAny<decimal>(), It.IsAny<decimal>())).Returns(3);
+            Mock<IOperator> mockOperator2 = new Mock<IOperator>();
+
+            calc.Number.OverrideValue(1);
+            calc.SetOperator(mockOperator.Object);
+            calc.Number.OverrideValue(2);
+            calc.SetOperator(mockOperator2.Object);
+            mockOperator.Verify(m => m.PerformOperation(1, 2));
+            calc.Number.OverrideValue(4);
+            calc.PerformOperation();
+            mockOperator2.Verify(m => m.PerformOperation(3, 4));
+        }
+
         private void VerifyAllChecked()
         {
             mockOperator.VerifyNoOtherCalls();

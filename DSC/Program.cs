@@ -2,7 +2,7 @@
 
 namespace DSC
 {
-    class Program
+    public class Program
     {
 
         public Program(CalcModel model)

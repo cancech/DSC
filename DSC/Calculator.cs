@@ -12,6 +12,9 @@
 
         public virtual void SetOperator(IOperator op)
         {
+            // If there is a chaining of operations happening, trigger the operation first
+            PerformOperation();
+
             this.op = op;
             lhs = Number.ValueDecimal();
             Number.Clear();
