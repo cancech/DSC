@@ -70,7 +70,7 @@ namespace DSCTest
             calc.Number.OverrideValue(43);
             Assert.AreEqual(43, calc.Number.ValueDecimal());
             calc.SetOperator(mockOperator.Object);
-            Assert.AreEqual(0, calc.Number.ValueDecimal());
+            Assert.AreEqual(43, calc.Number.ValueDecimal());
             calc.Number.OverrideValue(-9493);
             Assert.AreEqual(-9493, calc.Number.ValueDecimal());
 
@@ -109,6 +109,9 @@ namespace DSCTest
             Assert.AreEqual(0, calc.Number.ValueDecimal());
         }
 
+        /// <summary>
+        /// Verify that all mocked interaction has been accounted for.
+        /// </summary>
         private void VerifyAllChecked()
         {
             mockOperator.VerifyNoOtherCalls();

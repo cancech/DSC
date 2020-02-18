@@ -75,6 +75,9 @@ namespace DSCTest
             VerifyAllChecked();
         }
 
+        /// <summary>
+        /// Verify that all mocked interaction has been accounted for.
+        /// </summary>
         private void VerifyAllChecked()
         {
             model.VerifyNoOtherCalls();

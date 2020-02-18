@@ -1,9 +1,8 @@
-﻿
-
-using System.Collections.Generic;
-
-namespace DSC
+﻿namespace DSC
 {
+    /// <summary>
+    /// Enumeration of all commands available to the user
+    /// </summary>
     public enum Command
     {
         Input0,
@@ -30,6 +29,12 @@ namespace DSC
 
     public static class Extensions
     {
+        /// <summary>
+        /// Check if the command corresponds to a numeric input
+        /// </summary>
+        /// <returns><c>true</c>, if the command corresponds to a number input
+        /// by the user</returns>
+        /// <param name="command">Command to check</param>
         public static bool IsNumeric(this Command command)
         {
             return Command.Input0 <= command && command <= Command.Input9;

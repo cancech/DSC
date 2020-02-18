@@ -360,10 +360,16 @@ namespace DSCTest
             TestOverrideValueNumberInput();
         }
 
-        private void AssertValue(string txt, decimal dblVal, bool isDecimal)
+        /// <summary>
+        /// Verify that the number is properly updated as per expectations
+        /// </summary>
+        /// <param name="txt">The expected string value of the number</param>
+        /// <param name="decVal">The expected decimal value of the number</param>
+        /// <param name="isDecimal">The expected decimal state of the number</param>
+        private void AssertValue(string txt, decimal decVal, bool isDecimal)
         {
             Assert.AreEqual(txt, input.ValueString());
-            Assert.AreEqual(dblVal, input.ValueDecimal());
+            Assert.AreEqual(decVal, input.ValueDecimal());
             Assert.AreEqual(isDecimal, input.IsDecimal());
         }
     }

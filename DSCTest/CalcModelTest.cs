@@ -28,7 +28,8 @@ namespace DSCTest
             try
             {
                 model.UpdateDisplay("This is some text");
-            } catch (System.Exception)
+            }
+            catch (System.Exception)
             {
                 Assert.Fail("No exception should be thrown");
             }
@@ -121,28 +122,31 @@ namespace DSCTest
             AssertCommandResults(Command.Multiply, 3);
         }
 
-        /*
-         * Verify that the results for updating the display match expectations.
-         */
+        /// <summary>
+        /// Verify that the results for updating the display match expectations.
+        /// </summary>
+        /// <param name="expectedDisplay">string expected to be displayed on the UI.</param>
+        /// <param name="timesCalled">The number of times the update is expected to have been performed.</param>
         private void AssertDisplayResults(string expectedDisplay, int timesCalled)
         {
             Assert.AreEqual(expectedDisplay, lastDisplayUpdate);
             Assert.AreEqual(timesCalled, timesDisplayUpdated);
         }
 
-        /*
-         * Verify that the reuslts of command input matches expectations.
-         */
+        /// <summary>
+        /// Verify that the reuslts of command input matches expectations.
+        /// </summary>
+        /// <param name="expectedCommand">Command expected to have been triggered.</param>
+        /// <param name="timesCalled">The number of times the update is expected to have been performed.</param>
         private void AssertCommandResults(Command? expectedCommand, int timesCalled)
         {
             Assert.AreEqual(expectedCommand, lastCommand);
             Assert.AreEqual(timesCalled, timesCommandUpdate);
         }
 
-        /*
-         * The listener to registered for the purpose of testing the display 
-         * update propagation.        
-         */
+        /// <summary>
+        /// Test event handler to be used for the purposes of testing UI update propagation.
+        /// </summary>
         private void TestDisplayUpdate(CalcModel m, string s)
         {
             Assert.AreSame(model, m);
@@ -150,10 +154,9 @@ namespace DSCTest
             timesDisplayUpdated++;
         }
 
-        /*
-         * Listener to register for the purpose of testing the command propagation
-         * mechanism.
-         */        
+        /// <summary>
+        /// Test event handler to be used for the purpose of testing command propagation.
+        /// </summary>
         private void TestCommandTriggered(CalcModel m, Command c)
         {
             Assert.AreSame(model, m);

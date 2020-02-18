@@ -211,6 +211,34 @@ namespace DSCTest
             PerformAndAssertAction(Command.Equals, "16", true);
         }
 
+        [Test]
+        public void TestDivideByZero()
+        {
+            PerformAndAssertAction(Command.Input5, "5", true);
+            PerformAndAssertAction(Command.Decimal, "5.", true);
+            PerformAndAssertAction(Command.Input3, "5.3", true);
+            PerformAndAssertAction(Command.Divide, "5.3", false);
+            PerformAndAssertAction(Command.Input0, "0", true);
+            PerformAndAssertAction(Command.Equals, "NaN", true);
+
+        }
+
+        [Test]
+        public void TestOperationSelectedBackToBack()
+        {
+            PerformAndAssertAction(Command.Input6, "6", true);
+            PerformAndAssertAction(Command.Multiply, "6", false);
+            PerformAndAssertAction(Command.Minus, "6", false);
+            PerformAndAssertAction(Command.Input3, "3", true);
+            PerformAndAssertAction(Command.Equals, "33", true);
+        }
+
+        /// <summary>
+        /// The event handler to use for testing to receive updates for when UI
+        /// updates are being triggered/performed.
+        /// </summary>
+        /// <param name="m">Model which is triggering the update</param>
+        /// <param name="txt">string which is to be displayed</param>
         private void TextUpdated(CalcModel m, string txt)
         {
             Assert.AreEqual(model, m);
@@ -218,6 +246,13 @@ namespace DSCTest
             lastUpdate = txt;
         }
 
+        /// <summary>
+        /// Triggers the specified command and verifies that the expected result
+        /// is received from the logic.
+        /// </summary>
+        /// <param name="toPerform">Command which is to be triggered</param>
+        /// <param name="expected">string which is expected to be seen on the calculator display</param>
+        /// <param name="updateExpected"><c>true</c> the command is expected to trigger a UI update</param>
         private void PerformAndAssertAction(Command toPerform, string expected, bool updateExpected)
         {
             model.TriggerInput(toPerform);

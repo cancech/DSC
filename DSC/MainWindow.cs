@@ -3,11 +3,24 @@ using System.Collections.Generic;
 using DSC;
 using Gtk;
 
+/// <summary>
+/// The non-generated portion of the MainWindow
+/// </summary>
 public partial class MainWindow : Gtk.Window
 {
+    /// <summary>
+    /// The model with which to interface with the logic.
+    /// </summary>
     private readonly CalcModel calcModel;
+    /// <summary>
+    /// Mapping of buttons to the command that they trigger.
+    /// </summary>
     private Dictionary<Button, Command> commandDict = new Dictionary<Button, Command>();
 
+    /// <summary>
+    /// Create the UI and initialized the event handlers.
+    /// </summary>
+    /// <param name="calcModel">Calculate model.</param>
     public MainWindow(CalcModel calcModel) : base(Gtk.WindowType.Toplevel)
     {
         this.calcModel = calcModel;
@@ -18,6 +31,10 @@ public partial class MainWindow : Gtk.Window
         BuildCommandDictionary();
     }
 
+    /// <summary>
+    /// Perform customizations of the UI elements above and beyond what the UI
+    /// Designer allows for.
+    /// </summary>
     private void CustomizeGui()
     {
         // Update the LAF of the output label
@@ -30,6 +47,10 @@ public partial class MainWindow : Gtk.Window
         btnTable.Foreach(CustomizeBtn);
     }
 
+    /// <summary>
+    /// Customize the LAF and behavior of the specified button.
+    /// </summary>
+    /// <param name="widget">Widget representing the button to customize.</param>
     private void CustomizeBtn(Widget widget)
     {
         // Only care about the buttons
@@ -42,16 +63,27 @@ public partial class MainWindow : Gtk.Window
         btn.CanFocus = false;
     }
 
+    /// <summary>
+    /// Register the event listeners for updates from the logic
+    /// </summary>
     private void RegisterListeners()
     {
         calcModel.Display += UpdateDisplay;
     }
 
+    /// <summary>
+    /// Updates the calculator display with the values disctated by the logic.
+    /// </summary>
+    /// <param name="m">Model which triggered the update</param>
+    /// <param name="s">string which is to be displayed to the user</param>
     private void UpdateDisplay(CalcModel m, string s)
     {
         outputLabel.Text = s;
     }
 
+    /// <summary>
+    /// Build the dictionaty of button to command mappings.
+    /// </summary>
     private void BuildCommandDictionary()
     {
         commandDict.Add(BtnClear, Command.Clear);
@@ -76,11 +108,19 @@ public partial class MainWindow : Gtk.Window
         commandDict.Add(BtnZero, Command.Input0);
     }
 
+    /// <summary>
+    /// The event which is triggered when the user clicks on a button.
+    /// </summary>
+    /// <param name="sender">The widget object which triggered the event.</param>
+    /// <param name="e">The arguments of the event</param>
     protected void OnBtnClicked(object sender, EventArgs e)
     {
         calcModel.TriggerInput(commandDict[(Button)sender]);
     }
 
+    /// <summary>
+    /// Destroys the UI.
+    /// </summary>
     protected void OnDeleteEvent(object sender, DeleteEventArgs a)
     {
         Application.Quit();

@@ -31,7 +31,7 @@ namespace DSCTest
             processor.Setup(p => p.CommandsToProcess()).Returns(() => commands);
 
             // Register the processor
-            manager.RegisterCommand(processor.Object);
+            manager.RegisterProcessor(processor.Object);
             processor.Verify(v => v.CommandsToProcess());
             VerifyAllChecked();
 
@@ -41,13 +41,13 @@ namespace DSCTest
                 if (Array.IndexOf(commands, c) > -1)
                     continue;
 
-                manager.ProcessInput(model.Object, c);
+                manager.ProcessInputCommand(model.Object, c);
                 VerifyAllChecked();
             }
 
             foreach (Command c in commands)
             {
-                manager.ProcessInput(model.Object, c);
+                manager.ProcessInputCommand(model.Object, c);
                 processor.Verify(v => v.ProcessCommand(model.Object, c));
                 VerifyAllChecked();
             }

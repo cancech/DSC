@@ -1,14 +1,30 @@
 ﻿namespace DSC
 {
+    /// <summary>
+    /// Command Process for when the user triggers a numeric input command (presses
+    /// a number or number manipulation button - number manipulation meaning delete,
+    /// decimal, or sign inversion button).
+    /// </summary>
     public class NumericCommandProcessor : ICommandProcessor
     {
+        /// <summary>
+        /// The calculator instance we are working with
+        /// </summary>
         private readonly Calculator calculator;
 
-        public NumericCommandProcessor(Calculator calculator)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:DSC.NumericCommandProcessor"/> class.
+        /// </summary>
+        /// <param name="calc">The Calculator the operation is to be performed on</param>
+        public NumericCommandProcessor(Calculator calc)
         {
-            this.calculator = calculator;
+            this.calculator = calc;
         }
 
+        /// <summary>
+        /// Provide an array of commands the processor responds to
+        /// </summary>
+        /// <returns>Array of Commands</returns>
         public Command[] CommandsToProcess()
         {
             return new Command[] { Command.Input0, Command.Input1, Command.Input2,
@@ -17,6 +33,11 @@
                     Command.Decimal, Command.InvertSign };
         }
 
+        /// <summary>
+        /// Processes the command.
+        /// </summary>
+        /// <param name="model">Model that triggered the command</param>
+        /// <param name="toProcess">Command to process</param>
         public void ProcessCommand(CalcModel model, Command toProcess)
         {
             if (toProcess.IsNumeric())
