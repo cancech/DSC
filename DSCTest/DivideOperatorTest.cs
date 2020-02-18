@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using DSC;
+using System;
 
 namespace DSCTest
 {
@@ -20,7 +21,7 @@ namespace DSCTest
         [Test]
         public void TestDivisionByZero()
         {
-            Assert.AreEqual(0, new DivideOperator().PerformOperation(0M, 0M));
+            Assert.Throws<DivideByZeroException>(() => new DivideOperator().PerformOperation(0M, 0M));
         }
     }
 }

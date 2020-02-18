@@ -1,4 +1,6 @@
-﻿namespace DSC
+﻿using System;
+
+namespace DSC
 {
     public class Calculator
     {
@@ -22,7 +24,16 @@
 
         public virtual void PerformOperation()
         {
-            Number.OverrideValue(op.PerformOperation(lhs, Number.ValueDecimal()));
+            try
+            {
+                Number.OverrideValue(op.PerformOperation(lhs, Number.ValueDecimal()));
+            }
+            catch (Exception)
+            {
+                Number.MarkNaN();
+            }
+
+
             op = new DummyOperator();
         }
 

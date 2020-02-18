@@ -9,9 +9,20 @@ namespace DSC
         private bool isPositive;
         private int signFactor;
         private bool isTempOverride;
+        private bool isNan;
 
         // Clear will reset all values to their expected initial state
         public InputNumber() => Clear();
+
+        public virtual void Clear()
+        {
+            input = "";
+            isDecimal = false;
+            isPositive = true;
+            isTempOverride = false;
+            signFactor = 1;
+            isNan = false;
+        }
 
         public virtual void AppendDigit(int digit)
         {
@@ -60,16 +71,22 @@ namespace DSC
                 isDecimal = false;
         }
 
+        public virtual void MarkNaN()
+        {
+            Clear();
+            isTempOverride = true;
+            isNan = true;
+        }
+
         public virtual void OverrideValue(decimal value)
         {
+            Clear();
             isTempOverride = true;
 
             if (value == 0)
             {
                 // Special case if the result is exactly 0
                 input = "0";
-                isPositive = true;
-                signFactor = 1;
                 return;
             }
 
@@ -78,27 +95,17 @@ namespace DSC
                 isPositive = false;
                 signFactor = -1;
             }
-            else
-            {
-                isPositive = true;
-                signFactor = 1;
-            }
 
             input = Math.Abs(value).ToString();
             isDecimal = input.Contains(".");
         }
 
-        public virtual void Clear()
-        {
-            input = "";
-            isDecimal = false;
-            isPositive = true;
-            isTempOverride = false;
-            signFactor = 1;
-        }
-
         public virtual string ValueString()
         {
+            // NaN is a special case
+            if (isNan)
+                return "NaN";
+
             string toReturn = input;
 
             // Massage the resulting string
@@ -119,7 +126,7 @@ namespace DSC
 
         public virtual decimal ValueDecimal()
         {
-            if (IsEmpty() || input.Equals("."))
+            if (IsEmpty() || input.Equals(".") || isNan)
                 return 0.0M;
 
             return Decimal.Parse(input) * signFactor;

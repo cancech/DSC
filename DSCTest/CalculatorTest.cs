@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using Moq;
 using DSC;
+using System;
 
 namespace DSCTest
 {
@@ -93,6 +94,19 @@ namespace DSCTest
             calc.Number.OverrideValue(4);
             calc.PerformOperation();
             mockOperator2.Verify(m => m.PerformOperation(3, 4));
+        }
+
+        [Test]
+        public void TestExceptionDuringOperation()
+        {
+            mockOperator.Setup(m => m.PerformOperation(It.IsAny<decimal>(), It.IsAny<decimal>())).Throws(new Exception());
+
+            calc.SetOperator(mockOperator.Object);
+            calc.PerformOperation();
+
+            mockOperator.Verify(m => m.PerformOperation(0, 0));
+            Assert.AreEqual("NaN", calc.Number.ValueString());
+            Assert.AreEqual(0, calc.Number.ValueDecimal());
         }
 
         private void VerifyAllChecked()

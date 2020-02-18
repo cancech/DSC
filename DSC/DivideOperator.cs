@@ -7,7 +7,7 @@ namespace DSC
         public decimal PerformOperation(decimal lhs, decimal rhs)
         {
             if (rhs == 0)
-                return 0; // TODO should do something a bit better with this
+                throw new DivideByZeroException();
 
             return Math.Round(lhs / rhs, 10);
         }

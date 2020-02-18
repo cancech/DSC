@@ -328,6 +328,38 @@ namespace DSCTest
             AssertValue("0", 0M, false);
         }
 
+        [Test]
+        public void TestMarkNan()
+        {
+            // First make the number NaN
+            input.MarkNaN();
+            AssertValue("NaN", 0M, false);
+        }
+
+        [Test]
+        public void TestClearNaN()
+        {
+            TestMarkNan();
+
+            // Then make sure that it can be cleared
+            input.Clear();
+            AssertValue("0", 0M, false);
+        }
+
+        [Test]
+        public void TestNumberFromNaN()
+        {
+            TestMarkNan();
+            TestIntInput();
+        }
+
+        [Test]
+        public void TestOverrideFromNaN()
+        {
+            TestMarkNan();
+            TestOverrideValueNumberInput();
+        }
+
         private void AssertValue(string txt, decimal dblVal, bool isDecimal)
         {
             Assert.AreEqual(txt, input.ValueString());
